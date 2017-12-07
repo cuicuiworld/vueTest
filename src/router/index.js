@@ -10,42 +10,17 @@ Router.prototype.go = function() {
 }
 
 // 路由懒加载
-const index = () => import('@/page/index/index')
-const home = () => import('@/page/index/home/home')
-const user = () => import('@/page/index/user/user')
+
 
 /* eslint-disable */
+// eslint-disable-next-line 
 export default new Router({
     mode:'history',//去掉锚点
     saveScrollPosition: true, //记住页面的滚动位置 html5模式适用
     routes: [
         {
-            path: '',
-            redirect: '/index/home',
-            component: App,
-            children: [
-                // index页面
-                {
-                    name: 'index',
-                    path: '/index',
-                    redirect: '/index/home',
-                    component: index,
-                    children: [
-                        // home页面
-                        {
-                            name: 'home',
-                            path: 'home',
-                            component: home,
-                        },
-                        // user页面
-                        {
-                            name: 'user',
-                            path: 'user',
-                            component: user,
-                        }
-                    ]
-                }
-            ]
+            path:'/',
+            component:App
         }
     ]
 })
