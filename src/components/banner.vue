@@ -1,11 +1,11 @@
 <template>
     <div class='banner'>
         <swiper :options="swiperOption" class="swiper-box" ref="mySwiper">
-            <swiper-slide v-for='item in json' :key='item'>
+            <swiper-slide v-for='item in json' :key='item.id'>
                 <router-link :to="url(item)">
-                    <img :src="item.ptitlepic">
+                    <img :src="item.src">
                     <div class="banner_title">
-                        <p>{{item.title}}</p>
+                        <p>{{item.id}}</p>
                     </div>
                 </router-link>
             </swiper-slide>
@@ -15,44 +15,50 @@
 </template>
 <script>
 export default {
-    props: ['json'],
-    data() {
-        return {
-            swiperOption: {
-                notNextTick: true,
-                loop: true,
-                direction: 'horizontal',
-                autoplay: 3000,
-                pagination: '.swiper-pagination',
-                autoplayDisableOnInteraction: false
-            }
-        }
-    },
-    methods: {
-        url(item) {
-            return `/detail?classid=${item.classid}&id=${item.id}`
-        }
+  props: ["json"],
+  data() {
+    return {
+      swiperOption: {
+        notNextTick: true,
+        loop: true,
+        direction: "horizontal",
+        autoplay: 3000,
+        pagination: ".swiper-pagination",
+        autoplayDisableOnInteraction: false
+      }
+    };
+  },
+  methods: {
+    url(item) {
+      return `/detail?classid=${item.classid}&id=${item.id}`;
     }
-}
+  }
+};
 </script>
 <style lang='stylus'>
-banner_height=4.6875rem 
+banner_height = 4.6875rem;
+
 .banner {
     position: relative;
+
     .swiper-box {
         width: 100%;
         height: banner_height;
         overflow: hidden;
     }
+
     .swiper-pagination {
         right: 12px;
         bottom: 10px;
+
         .swiper-pagination-bullet {
             width: 6px;
             height: 6px;
             background: #fff;
+            margin: 0 2px;
         }
     }
+
     .banner_title {
         position: absolute;
         width: 100%;
@@ -63,6 +69,7 @@ banner_height=4.6875rem
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 8%, rgba(0, 0, 0, 0.24) 40%, rgba(0, 0, 0, 0.29) 47%, rgba(0, 0, 0, 0.65) 95%);
         z-index: 222;
         padding: 10px 8px;
+
         p {
             width: 85%;
             font-size: 14px;
@@ -73,6 +80,7 @@ banner_height=4.6875rem
             overflow: hidden;
         }
     }
+
     img {
         width: 100%;
         height: 100%;

@@ -28,12 +28,12 @@ export default {
       }
     },
     topItemClick(item) {
-    console.log(item);
-    this.$router.push({ name: item.route });
-    this.selected = item.route;
+      console.log(item);
+      this.$router.push({ name: item.route });
+      this.selected = item.route;
+    }
   }
-  }
-}
+};
 </script>
 <style lang='css'>
 #topBar {
@@ -45,13 +45,12 @@ export default {
   z-index: 999;
   display: flex;
   background: #fff;
-  border-bottom: 1px solid #ddd;
   overflow: hidden;
 }
 #topBar .topBar_item {
   flex: 1;
-  color: #fff;
-  background-color: #3e3d42;
+  color: #333;
+  position: relative;
 }
 
 #topBar .topBar_name {
@@ -60,26 +59,19 @@ export default {
   line-height: 36px;
 }
 
-#topBar::after {
-  content: " ";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 1px;
-  height: 70px;
-  bottom: 0;
-  border-left: 1px solid #d5d5d6;
-  color: #d5d5d6;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transform: scaleX(0.5);
-  transform: scaleX(0.5);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+.topActive {
+  color:rgb(255, 86, 2)!important;
 }
 
-.topActive {
-  background-color: #5b5b5b;
+.topActive::after{
+  content: ' ';
+  height: 1px;
+  width: 50%;
+  position: absolute;
+  bottom:0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: solid 1px rgb(255, 86, 2);
 }
 </style>
 

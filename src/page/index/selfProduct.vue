@@ -1,20 +1,39 @@
 <template>
   <div id="selfPro">
     <!-- banner -->
-    <banner></banner>
+    <my-banner :json="bannerJSON" v-if="bannerJSON.length>0"></my-banner>
+    <!-- shoplist -->
+    <shop-list></shop-list>
   </div>
 </template>
 <script>
-import banner from "@/components/banner";
+import Mock from "mockjs";
+// 生成轮播数据
+const imgdata = Mock.mock({
+  "list|3": [
+    {
+      "id|+1": 1,
+      src: "@image(640x400, #ffcc33, #333,Banner)"
+    }
+  ]
+});
+
+import shopList from "@/page/index/shoplist";
+
 export default {
   data() {
-    return {};
+    return {
+      bannerJSON: imgdata.list
+    };
   },
+  methods: {},
   components: {
-    banner
+    shopList
   }
 };
 </script>
 <style lang="css" scoped>
-
+#selfPro {
+  margin-top: 36px;
+}
 </style>

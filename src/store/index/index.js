@@ -10,7 +10,9 @@ import {
 export default {
   namespaced: true,
   state: {
-    
+    indexColumn: [{
+      name:''
+    }]
   },
   getters: {
 
@@ -19,6 +21,5 @@ export default {
 
   },
   actions: {
-
   }
 }
